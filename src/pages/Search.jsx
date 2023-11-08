@@ -5,24 +5,36 @@ import MovieCard from "../components/MovieCard";
 const searchURL = import.meta.env.VITE_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY;
 
-import './MoviesGrid.css'
+import './MoviesGrid.css';
 
-const Search = ( )=> {
+const Search = ()=> {
   const [searchParams] = useSearchParams()
 
   const [movies, setMovies] = useState([])
-  const query = searchParam.get("q")
+  const query = searchParams.get('q')
 
+  const getTopSearchedMovies = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
 
+    setTopMovies(data.results)
+    console.log(data.results)
+  }
 
-
+  useEffect(() => {
+    
+    const searchWithQueryURL = `${searchURL}?${apiKey}&query=${query}`
+    
+    getTopSearchedMovies(searchWithQueryURL);
+  }, []);
 
   return(    
   <div className="container">
     <h2 className="title">Resultados para: <span className="query-text">{query}</span></h2>
     <div className="movies-container">
-      {topMovies.length === 0 && <p>Carregando...</p> }
-      {topMovies.length > 0  && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+      {movies.length === 0 && <p>Carregando...</p> }
+      {movies.length > 0  && 
+        topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
     </div>
 </div>
   )
