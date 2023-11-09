@@ -11,8 +11,21 @@ import MovieCard from "../components/MovieCard";
 
 import './Movie.css';
 
+const moviesURL = import.meta.env.VITE_API;
+const apiKey = import.meta.env.VITE_API_KEY;
+
 
 const Movies = ( )=> {
+  const {id} = useParams();
+  const [movie, setMovie] = useState(null)
+
+  const getMovie = async(url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    setMovies(data.results)
+  }
+
   return(
     <>
     </>
