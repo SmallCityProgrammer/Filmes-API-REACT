@@ -33,7 +33,16 @@ const Movie = () => {
 
   return(
     <div>
-    {movie && <><MovieCard movie={movie} showLink={false} /></>}
+    {movie && (
+      <>
+        <MovieCard movie={movie} showLink={false} />
+        <p className="tagline">{movie.tagline}</p>
+        <div className='info'>
+          <h3>
+            <BsWallet2 /> Orçamento
+          </h3>
+        </div>
+    </>)}
     </div>
   )
 }
