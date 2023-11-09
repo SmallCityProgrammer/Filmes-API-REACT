@@ -33,7 +33,7 @@ const Movie = () => {
 
   return(
     <div>
-    {movie && <>{movie.title}</>}
+    {movie && <><MovieCard movie={movie} showLink={false} /></>}
     </div>
   )
 }
