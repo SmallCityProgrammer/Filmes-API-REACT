@@ -4,7 +4,7 @@ import{
   BsGraphUp,
   BsWallet2,
   BsHourglassSplit,
-  BsFillFileEarmarkTextFill
+  BsFillFileEarmarkTextFill,
 } from 'react-icons/bs';
 
 import MovieCard from "../components/MovieCard";
@@ -15,7 +15,7 @@ const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 
-const Movies = ( )=> {
+const Movie = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState(null)
 
@@ -23,13 +23,19 @@ const Movies = ( )=> {
     const res = await fetch(url);
     const data = await res.json();
 
-    setMovies(data.results)
+    setMovie(data)
   }
 
+  useEffect(() => {
+    const movieUrl = `${moviesURL}${id}?${apiKey}`;
+    getMovie(movieUrl)
+  }, [])
+
   return(
-    <>
-    </>
+    <div>
+    {movie && <>{movie.title}</>}
+    </div>
   )
 }
 
-export default Movies;
+export default Movie;
