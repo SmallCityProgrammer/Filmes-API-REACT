@@ -41,6 +41,25 @@ const Movie = () => {
           <h3>
             <BsWallet2 /> Orçamento
           </h3>
+          <p>{movie.budget}</p>
+        </div>
+        <div className='info'>
+          <h3>
+            <BsGraphUp /> Receita
+          </h3>
+          <p>{movie.revenue}</p>
+        </div>
+        <div className='info'>
+          <h3>
+            <BsHourglassSplit /> Duração
+          </h3>
+          <p>{movie.runtime}</p>
+        </div>
+        <div className='info'>
+          <h3>
+            <BsFillFileEarmarkTextFill /> Descrição
+          </h3>
+          <p>{movie.overview}</p>
         </div>
     </>)}
     </div>
